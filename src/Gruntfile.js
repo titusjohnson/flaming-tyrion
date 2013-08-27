@@ -12,37 +12,40 @@ module.exports = function(grunt) {
         concat: {
             // This just moves modernizr to a usuable place
             modernizr: {
-                src: 'components/foundation/js/vendor/custom.modernizr.js',
+                src: 'bower_components/foundation/js/vendor/custom.modernizr.js',
                 dest: '../public/media/javascript/custom.modernizr.js'
             },
             // This grabs all of our libraries and makes one file
             libs: {
                 src: [
-                    'components/jquery/jquery.js',
+                    'bower_components/jquery/jquery.js',
+                    'javascript/lib/jquery.pubsub.js',
 
-                    'components/foundation/js/foundation/foundation.js',
-                    'components/foundation/js/foundation/foundation.alerts.js',
-                    'components/foundation/js/foundation/foundation.clearing.js',
-                    'components/foundation/js/foundation/foundation.cookie.js',
-                    'components/foundation/js/foundation/foundation.dropdown.js',
-                    'components/foundation/js/foundation/foundation.forms.js',
-                    'components/foundation/js/foundation/foundation.joyride.js',
-                    'components/foundation/js/foundation/foundation.magellan.js',
-                    'components/foundation/js/foundation/foundation.orbit.js',
-                    'components/foundation/js/foundation/foundation.placeholder.js',
-                    'components/foundation/js/foundation/foundation.reveal.js',
-                    'components/foundation/js/foundation/foundation.section.js',
-                    'components/foundation/js/foundation/foundation.tooltips.js',
-                    'components/foundation/js/foundation/foundation.topbar.js',
+                    'bower_components/foundation/js/foundation/foundation.js',
+                    'bower_components/foundation/js/foundation/foundation.alerts.js',
+                    'bower_components/foundation/js/foundation/foundation.clearing.js',
+                    'bower_components/foundation/js/foundation/foundation.cookie.js',
+                    'bower_components/foundation/js/foundation/foundation.dropdown.js',
+                    'bower_components/foundation/js/foundation/foundation.forms.js',
+                    'bower_components/foundation/js/foundation/foundation.joyride.js',
+                    'bower_components/foundation/js/foundation/foundation.magellan.js',
+                    'bower_components/foundation/js/foundation/foundation.orbit.js',
+                    'bower_components/foundation/js/foundation/foundation.placeholder.js',
+                    'bower_components/foundation/js/foundation/foundation.reveal.js',
+                    'bower_components/foundation/js/foundation/foundation.section.js',
+                    'bower_components/foundation/js/foundation/foundation.tooltips.js',
+                    'bower_components/foundation/js/foundation/foundation.topbar.js',
 
-                    'components/knockout/build/output/knockout-latest.js',
-                    'components/finchjs/scripts/finch.js'
+                    'bower_components/knockout/build/output/knockout-latest.js',
+                    'bower_components/finchjs/scripts/finch.js'
                 ],
                 dest: '../app/www/media/javascript/libs.js'
             },
             app: {
                 src: [
                     'javascript/setup.js',
+                    'javascript/scenes/*.js',
+                    'javascript/models/*.js',
                     'javascript/viewmodels/*.js',
                     'javascript/functions.js',
                     'javascript/app.js'
@@ -56,7 +59,7 @@ module.exports = function(grunt) {
             // Grab the foundation scss and make a foundation file
             libs: {
                 options: {
-                    sassDir: 'components/foundation/scss/',
+                    sassDir: 'bower_components/foundation/scss/',
                     cssDir: '../app/www/media/stylesheets/'
                 }
             },
@@ -109,6 +112,8 @@ module.exports = function(grunt) {
             scripts: {
                 files: [
                     'javascript/*',
+                    'javascript/scenes/*',
+                    'javascript/models/*',
                     'javascript/viewmodels/*'
                 ],
                 tasks: ['concat:app']

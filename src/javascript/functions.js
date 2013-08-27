@@ -10,6 +10,9 @@ if(!Object.keys) Object.keys = function(o){
 // source: http://stackoverflow.com/questions/359788/how-to-execute-a-javascript-function-when-i-have-its-name-as-a-string
 // modified return to just pass object
 function returnObjectByName(objectName, context, args) {
+    console.log(objectName, context, args)
+
+
     var args = Array.prototype.slice.call(arguments).splice(2);
     var namespaces = objectName.split(".");
     var func = namespaces.pop();

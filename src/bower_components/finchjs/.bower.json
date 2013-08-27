@@ -1,0 +1,14 @@
+{
+  "name": "finchjs",
+  "homepage": "https://github.com/stoodder/finchjs",
+  "version": "0.5.13",
+  "_release": "0.5.13",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.5.13",
+    "commit": "19cc0e52bcd58638eb07a58b33bc6f45e20de923"
+  },
+  "_source": "https://github.com/stoodder/finchjs.git",
+  "_target": "~0.5.13",
+  "_originalSource": "https://github.com/stoodder/finchjs.git"
+}

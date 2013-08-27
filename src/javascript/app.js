@@ -10,8 +10,7 @@ $(function(){
     // http://stoodder.github.io/finchjs/
     App.Routes = {
         "": "Home",
-        "docs": "Docs",
-        "docs/:document": "ViewDoc"
+        "play": "Play"
     };
 
     // Register each table item as a route to watch
