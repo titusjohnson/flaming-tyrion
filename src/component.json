@@ -1,0 +1,10 @@
+{
+  "name": "DeploydHeadstart",
+  "version": "0.0.4",
+  "dependencies": {
+    "jquery": "~2.0.0",
+    "foundation": "~4.3.1",
+    "knockout": "2.2.1",
+    "finchjs": "https://github.com/stoodder/finchjs.git#~0.5.13"
+  }
+}

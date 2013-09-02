@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deployd Headstart</title>
+    <link rel="stylesheet" href="media/stylesheets/normalize.css" />
+    <link rel="stylesheet" href="media/stylesheets/foundation.css" />
+    <link rel="stylesheet" href="media/stylesheets/stylesheet.css" />
+    <script type="text/javascript" src="media/javascript/custom.modernizr.js"></script>
+</head>
+<body>
+<div id="App">
+    <nav class="top-bar">
+        <ul class="title-area">
+            <li class="name"><h1><a href="/#/">Deployd Headstart</a></h1></li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+            <ul class="right">
+                <li class="divider"></li>
+                <li><a href="/#/">Home</a></li>
+                <li class="divider"></li>
+                <li><a href="/#/docs">Documentation</a></li>
+            </ul>
+        </section>
+    </nav>
+	
+    <div data-bind="template: { name: Template(), data: TemplateViewModel() }" id="PageTemplate"></div>
+</div>
+<div id="Views">
+<script type="text/html" id="docs">
+<div class="row">
+    <div class="twelve columns">
+    <h3>Basic Documentation</h3>
+    <h5>Adding Pages</h5>
+    <p>
+    <ol>
+        <li>
+            Edit app.js and add the desired routes. Name the view model something simple.
+            <blockquote><pre>
+                App.Routes = {
+                    "": "Home",
+                    "docs": "Docs",
+                    "docs/:document": "ViewDoc"
+                    "route/path": "NewViewModelName"
+                };
+            </pre></blockquote>
+        </li>
+        <li>
+            In /javascript/viewmodels/ create a new file with this as the content. Replace $NAME$ with the name of your View Model, assigned above. This file contains only one function, which will be bound by KnockoutJS when a user navigates to the route you created.
+            <blockquote><pre>
+                App.ViewModels.$NAME$ = function(url_values, state) {
+                    var self = this;
+
+                    state.PageTitle("Docs");
+
+                    return self;
+                };
+            </pre></blockquote>
+            
+        </li>
+
+        <li>
+            Create a new html file in /templates/views/, name it $controller$.html. Seed it with the following html, and edit the ID accordingly. This file is nothing but a single, or closly related, set of KnockoutJS templates. The file will be concatenated into one single file by Grunt.
+            <blockquote><pre>
+                &lt;script type="text/html" id="$controller$"&gt;
+                    Template HTML here.
+                &lt;/script&gt;
+            </pre></blockquote>
+        </li>
+    </div>
+</div>
+</script>
+<script type="text/html" id="home">
+<div class="row">
+    <div class="twelve columns">
+       <h2>Welcome to Headstart for deployd.</h2>
+       <p>This collection of libraries is intended to give you a <em>head start</em> on mocking up ideas, concepts, and other data-driven web <em>things</em>. You are encouraged to fork the project and customize as per your needs.
+    </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+	   <h4>Basic Concepts.</h4>
+       <p>Headstart is mostly a set of Grunt and Bower configuration files, and a loose framework of supporting JS designed to give the user a simple MVC-esq experience, intended for use with Deployd for any backend data needs.</p>
+       <p>At its core, Gruntfile.js makes strong assumptions about workflow. Foundation4 is preconfigured, SASS is assumed, and the front-end uses jQuery, KnockoutJS, and FinchJS. Headstart provides a very basic framework, consisting of FinchJS for routing, and KnockoutJS for everything else. Routes initalize named KnockoutJS view models, which in turn provide data to templates. It's a very simple setup focused on getting pages working immediatly, and in as traditional a style as possible.</p>
+       
+       <p>Getting started is easy. We assume that you have already installed deployd, node, and have grunt-cli working. The following set of terminal commands also assume you're on OSX.
+            <blockquote>
+            $ cd /your/destination<br />
+            $ dpd create your-app-name<br />
+            $ cd your-app-name<br />
+            $ git clone https://github.com/titusjohnson/deployd-headstart your-app-name<br />
+            $ cd your-app-name<br />
+            $ npm install<br />
+            $ bower install<br />
+            $ grunt init<br />
+            $ grunt
+            </blockquote>
+            <p>At this point your new app is being monitored. Bower has grabbed all the source files needed, the grunt:init call ran through Bower's components directory and compiled some lib files for you. Grunt is watching your source folder, and will automatically compile changed SCSS, templates, images, and javascript into deployd's public directory. If you fire up deployd in the parent directory you should be able to visit the site's small front-end and view some extra documentation.</p>
+
+            <p>Some things are still a bit rough, and most of the documentation is in the code. The structure of the framework is very simple, there are two main viewmodels, each page is a child view model that Finch binds when it detects a matching route change. What happens when a page loads is up to you. I usually grab some data from Deployd and insert it into any observables I want, return the object, and then write up some templates.</p>
+
+            <p>It's a Headstart, just intended to get the setup out of the way so you can start writing some code.</p>
+
+            <p><a href="https://github.com/titusjohnson/deployd-headstart">https://github.com/titusjohnson/deployd-headstart</a>
+    </div>
+</div>
+</script>
+</div>
+
+    <script type="text/javascript" src="/dpd.js"></script>
+    <script type="text/javascript" src="/media/javascript/libs.js"></script>
+    <script type="text/javascript" src="/media/javascript/app.js"></script>
+</body>
+</html>
